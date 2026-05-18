@@ -8,10 +8,79 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <h1>kk</h1>
-    <p>work in progress. come back soon.</p>
+
+  <header class="site-header">
+    <div class="site-header__brand">kk</div>
+    <button type="button" class="site-header__login" id="login-button" aria-controls="login-panel" aria-expanded="false">
+      Login
+    </button>
+  </header>
+
+  <main class="bento">
+
+    <section class="tile tile--cfray" id="tile-cfray">
+      <span class="tile__label">served from</span>
+      <p class="tile__value" id="cfray-value">checking edge node…</p>
+    </section>
+
+    <section class="tile tile--links" id="tile-links">
+      <span class="tile__label">find me</span>
+      <ul class="tile__links">
+        <li><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:your-email@example.com">Email</a></li>
+      </ul>
+    </section>
+
+    <section class="tile tile--theme" id="tile-theme">
+      <span class="tile__label">theme</span>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme">
+        <span class="theme-toggle__option" data-mode="light">light</span>
+        <span class="theme-toggle__divider">/</span>
+        <span class="theme-toggle__option" data-mode="dark">dark</span>
+      </button>
+    </section>
+
+    <section class="tile tile--hero" id="tile-hero">
+      <span class="tile__label">hello</span>
+      <h1 class="tile__heading">Hey, I'm kk.</h1>
+      <p class="tile__body">Placeholder one-liner about who I am.</p>
+    </section>
+
+    <section class="tile tile--stack" id="tile-stack">
+      <span class="tile__label">my stack</span>
+      <ul class="tile__list">
+        <li>Placeholder tech 1</li>
+        <li>Placeholder tech 2</li>
+        <li>Placeholder tech 3</li>
+        <li>Placeholder tech 4</li>
+      </ul>
+    </section>
+
+    <section class="tile tile--placeholder" id="tile-placeholder">
+      <span class="tile__label">tile #6</span>
+      <p class="tile__value">placeholder XD</p>
+    </section>
+
+    <section class="tile tile--why" id="tile-why">
+      <span class="tile__label">why this exists</span>
+      <p class="tile__body">Placeholder paragraph about why this site was built.</p>
+    </section>
+
+    <section class="tile tile--credits" id="tile-credits">
+      <span class="tile__label">credits</span>
+      <p class="tile__body">Placeholder credits line.</p>
+    </section>
+
   </main>
+
+  <aside class="login-panel" id="login-panel" aria-hidden="true">
+    <button type="button" class="login-panel__close" id="login-panel-close" aria-label="Close panel">×</button>
+    <div class="login-panel__content">
+      <h2 class="login-panel__heading">Login?</h2>
+      <p class="login-panel__body">Placeholder punchline for the login gag.</p>
+    </div>
+  </aside>
 
   <script src="script.js"></script>
 </body>
