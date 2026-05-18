@@ -341,3 +341,204 @@ body {
 }
 
 /* The "why" and "credits" tiles end at row 5 — bottom edge */
+
+/* ============================================================
+   10. Tile content alignment (per-variant)
+   ============================================================ */
+
+/* Most tiles: stack content naturally at the top, no space-between */
+.tile--links,
+.tile--theme,
+.tile--stack,
+.tile--placeholder,
+.tile--why,
+.tile--credits {
+  justify-content: flex-start;
+  gap: var(--space-3);
+}
+
+/* Hero: center the content vertically for visual anchor effect */
+.tile--hero {
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.tile--hero .tile__label {
+  margin-bottom: var(--space-2);
+}
+
+.tile--hero .tile__heading {
+  font-size: 2.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+
+.tile--hero .tile__body {
+  font-size: 1rem;
+  max-width: 38ch;
+}
+
+/* cf-ray: keep space-between (label up top, value at bottom) */
+.tile--cfray {
+  justify-content: space-between;
+}
+
+/* ============================================================
+   11. Links tile polish
+   ============================================================ */
+
+.tile--links .tile__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tile--links .tile__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  font-size: 0.9375rem;
+  border-bottom: none;
+  color: var(--color-text);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tile--links .tile__links a::after {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.tile--links .tile__links a:hover {
+  color: var(--color-text);
+}
+
+.tile--links .tile__links a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   12. Theme toggle styling
+   ============================================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  transition: border-color var(--transition-fast);
+  align-self: flex-start;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-text);
+}
+
+.theme-toggle__option {
+  color: var(--color-text-faint);
+  transition: color var(--transition-fast);
+}
+
+.theme-toggle__option[data-active="true"] {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.theme-toggle__divider {
+  color: var(--color-text-faint);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   13. Stack tile polish
+   ============================================================ */
+
+.tile--stack .tile__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tile--stack .tile__list li {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.tile--stack .tile__list li::before {
+  content: "·";
+  position: absolute;
+  left: var(--space-2);
+  color: var(--color-text-faint);
+  font-weight: 500;
+}
+
+/* ============================================================
+   14. Placeholder tile — lean into the joke
+   ============================================================ */
+
+.tile--placeholder {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  border-style: dashed;
+}
+
+.tile--placeholder .tile__label {
+  margin-bottom: var(--space-2);
+}
+
+.tile--placeholder .tile__value {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-faint);
+}
+
+/* ============================================================
+   15. Why and credits tiles
+   ============================================================ */
+
+.tile--why .tile__body,
+.tile--credits .tile__body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.tile--credits {
+  background: transparent;
+}
+
+.tile--credits .tile__body {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+/* ============================================================
+   16. Focus states (keyboard accessibility)
+   ============================================================ */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-text);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.tile a:focus-visible,
+.theme-toggle:focus-visible,
+.site-header__login:focus-visible {
+  outline-offset: 4px;
+}
