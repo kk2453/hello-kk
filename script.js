@@ -31,12 +31,48 @@
   loginPanelClose.addEventListener("click", closeLoginPanel);
   loginBackdrop.addEventListener("click", closeLoginPanel);
 
-  // Escape key closes the panel
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && loginPanel.getAttribute("data-state") === "open") {
       closeLoginPanel();
     }
   });
+
+  // ============================================================
+  // 2. Theme toggle
+  // ============================================================
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeOptions = themeToggle.querySelectorAll(".theme-toggle__option");
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute("data-theme") || "light";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (e) {}
+    updateToggleUI(theme);
+  }
+
+  function updateToggleUI(theme) {
+    themeOptions.forEach(function (option) {
+      const mode = option.getAttribute("data-mode");
+      option.setAttribute("data-active", mode === theme ? "true" : "false");
+    });
+  }
+
+  function toggleTheme() {
+    const current = getCurrentTheme();
+    const next = current === "dark" ? "light" : "dark";
+    applyTheme(next);
+  }
+
+  // Initialize UI to match the current theme set by the bootstrap script
+  updateToggleUI(getCurrentTheme());
+
+  // Click anywhere on the toggle flips the theme
+  themeToggle.addEventListener("click", toggleTheme);
 
   console.log("hello-kk — interactivity ready");
 })();
