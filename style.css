@@ -61,14 +61,14 @@ h1, h2, h3, h4, h5, h6 {
                "Liberation Mono", monospace;
 
   /* Spacing scale (multiples of 4px) */
-  --space-1: 0.25rem;   /* 4px  */
-  --space-2: 0.5rem;    /* 8px  */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.5rem;    /* 24px */
-  --space-6: 2rem;      /* 32px */
-  --space-7: 3rem;      /* 48px */
-  --space-8: 4rem;      /* 64px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
 
   /* Border radius */
   --radius-sm: 6px;
@@ -89,13 +89,11 @@ h1, h2, h3, h4, h5, h6 {
   --color-border: #e5e7eb;
   --color-border-strong: #d1d5db;
 
-  /* Accent — used for cf-ray tile and interactive accents */
   --color-accent-bg: #eff6ff;
   --color-accent-text: #1e40af;
   --color-accent-border: #bfdbfe;
 }
 
-/* Dark theme — auto-applied when OS prefers dark */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0a0a0a;
@@ -148,7 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   4. Base typography for our content
+   4. Base typography for tile content
    ============================================================ */
 
 .tile__label {
@@ -254,9 +252,9 @@ body {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, minmax(110px, 1fr));
+  grid-template-rows: repeat(5, minmax(90px, auto));
   gap: var(--space-4);
-  max-width: 1400px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
 }
@@ -340,13 +338,10 @@ body {
   grid-row: 4;
 }
 
-/* The "why" and "credits" tiles end at row 5 — bottom edge */
-
 /* ============================================================
    10. Tile content alignment (per-variant)
    ============================================================ */
 
-/* Most tiles: stack content naturally at the top, no space-between */
 .tile--links,
 .tile--theme,
 .tile--stack,
@@ -357,7 +352,6 @@ body {
   gap: var(--space-3);
 }
 
-/* Hero: center the content vertically for visual anchor effect */
 .tile--hero {
   justify-content: center;
   align-items: flex-start;
@@ -380,7 +374,6 @@ body {
   max-width: 38ch;
 }
 
-/* cf-ray: keep space-between (label up top, value at bottom) */
 .tile--cfray {
   justify-content: space-between;
 }
@@ -483,15 +476,22 @@ body {
 }
 
 /* ============================================================
-   14. Placeholder tile — lean into the joke
+   14. Placeholder tile — soft, intentional emptiness
    ============================================================ */
 
 .tile--placeholder {
+  background: var(--color-bg-tile);
+  border-style: dashed;
+  border-color: var(--color-border);
+  opacity: 0.6;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: transparent;
-  border-style: dashed;
+}
+
+.tile--placeholder:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
 }
 
 .tile--placeholder .tile__label {
@@ -515,7 +515,12 @@ body {
 }
 
 .tile--credits {
-  background: transparent;
+  background: var(--color-bg-tile);
+  opacity: 0.7;
+}
+
+.tile--credits:hover {
+  opacity: 1;
 }
 
 .tile--credits .tile__body {
@@ -544,34 +549,78 @@ body {
 }
 
 /* ============================================================
-   17. Refinements based on visual review
+   17. Login panel — slide-in side panel (from the right)
    ============================================================ */
 
-/* Tighten the overall grid height — tiles felt too spacious with placeholder content */
-.bento {
-  grid-template-rows: repeat(5, minmax(90px, auto));
-  max-width: 1300px;
-}
-
-/* Placeholder tile — softer contrast, still reads as "intentionally empty" */
-.tile--placeholder {
+.login-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 100%);
+  height: 100vh;
   background: var(--color-bg-tile);
-  border-style: dashed;
-  border-color: var(--color-border);
-  opacity: 0.6;
+  border-left: 1px solid var(--color-border);
+  padding: var(--space-7) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+
+  z-index: 100;
 }
 
-.tile--placeholder:hover {
-  opacity: 0.9;
-  transform: translateY(-3px);
+.login-panel[data-state="open"] {
+  transform: translateX(0);
 }
 
-/* Credits tile — keep transparent but soften the look */
-.tile--credits {
-  background: var(--color-bg-tile);
-  opacity: 0.7;
+.login-panel__close {
+  align-self: flex-start;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
 }
 
-.tile--credits:hover {
+.login-panel__close:hover {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.login-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.login-panel__heading {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.login-panel__body {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Backdrop overlay — dims the page behind the panel when open */
+.login-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 50;
+}
+
+.login-backdrop[data-state="open"] {
   opacity: 1;
+  pointer-events: auto;
 }
