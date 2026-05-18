@@ -68,11 +68,38 @@
     applyTheme(next);
   }
 
-  // Initialize UI to match the current theme set by the bootstrap script
   updateToggleUI(getCurrentTheme());
-
-  // Click anywhere on the toggle flips the theme
   themeToggle.addEventListener("click", toggleTheme);
+
+  // ============================================================
+  // 3. cf-ray live fetch
+  // ============================================================
+  const cfrayColo = document.getElementById("cfray-colo");
+  const cfrayId = document.getElementById("cfray-id");
+
+  async function fetchEdgeInfo() {
+    try {
+      const response = await fetch("/api/ray", { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+
+      const data = await response.json();
+
+      const colo = data.colo || "unknown";
+      const ray = data.ray || "unknown";
+      const city = data.city && data.city !== "unknown" ? data.city : null;
+
+      cfrayColo.textContent = city ? colo + " · " + city.toLowerCase() : colo;
+      cfrayId.textContent = ray.split("-")[0];
+    } catch (err) {
+      cfrayColo.textContent = "offline";
+      cfrayId.textContent = "open via cloudflare to see the edge node";
+    }
+  }
+
+  fetchEdgeInfo();
 
   console.log("hello-kk — interactivity ready");
 })();

@@ -54,13 +54,11 @@ h1, h2, h3, h4, h5, h6 {
    ============================================================ */
 
 :root {
-  /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
                "Liberation Mono", monospace;
 
-  /* Spacing scale (multiples of 4px) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -70,16 +68,13 @@ h1, h2, h3, h4, h5, h6 {
   --space-7: 3rem;
   --space-8: 4rem;
 
-  /* Border radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 
-  /* Light theme — default */
   --color-bg: #fafaf9;
   --color-bg-tile: #ffffff;
   --color-bg-tile-hover: #ffffff;
@@ -110,10 +105,6 @@ h1, h2, h3, h4, h5, h6 {
     --color-accent-border: #1e40af;
   }
 }
-
-/* ============================================================
-   3. Manual theme override (used by JS toggle in Phase 6)
-   ============================================================ */
 
 :root[data-theme="light"] {
   --color-bg: #fafaf9;
@@ -146,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   4. Base typography for tile content
+   3. Base typography
    ============================================================ */
 
 .tile__label {
@@ -199,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   5. Page layout
+   4. Page layout
    ============================================================ */
 
 body {
@@ -211,7 +202,7 @@ body {
 }
 
 /* ============================================================
-   6. Header
+   5. Header
    ============================================================ */
 
 .site-header {
@@ -245,7 +236,7 @@ body {
 }
 
 /* ============================================================
-   7. Bento grid
+   6. Bento grid
    ============================================================ */
 
 .bento {
@@ -260,7 +251,7 @@ body {
 }
 
 /* ============================================================
-   8. Tile base styles
+   7. Tile base styles
    ============================================================ */
 
 .tile {
@@ -284,7 +275,7 @@ body {
 }
 
 /* ============================================================
-   9. Tile grid placements (the bento arrangement)
+   8. Tile grid placements
    ============================================================ */
 
 .tile--cfray {
@@ -339,7 +330,7 @@ body {
 }
 
 /* ============================================================
-   10. Tile content alignment (per-variant)
+   9. Tile content alignment (per-variant)
    ============================================================ */
 
 .tile--links,
@@ -376,6 +367,30 @@ body {
 
 .tile--cfray {
   justify-content: space-between;
+}
+
+/* ============================================================
+   10. cf-ray display (colo prominent, ray ID quiet)
+   ============================================================ */
+
+.cfray-display {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tile--cfray .tile__value {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.cfray-id {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-accent-text);
+  opacity: 0.6;
+  word-break: break-all;
 }
 
 /* ============================================================
@@ -476,7 +491,7 @@ body {
 }
 
 /* ============================================================
-   14. Placeholder tile — soft, intentional emptiness
+   14. Placeholder tile
    ============================================================ */
 
 .tile--placeholder {
@@ -529,7 +544,7 @@ body {
 }
 
 /* ============================================================
-   16. Focus states (keyboard accessibility)
+   16. Focus states
    ============================================================ */
 
 :focus {
@@ -549,7 +564,7 @@ body {
 }
 
 /* ============================================================
-   17. Login panel — slide-in side panel (from the right)
+   17. Login panel — slide-in from the right
    ============================================================ */
 
 .login-panel {
@@ -609,7 +624,6 @@ body {
   line-height: 1.7;
 }
 
-/* Backdrop overlay — dims the page behind the panel when open */
 .login-backdrop {
   position: fixed;
   inset: 0;
