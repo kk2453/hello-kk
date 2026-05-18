@@ -542,3 +542,36 @@ body {
 .site-header__login:focus-visible {
   outline-offset: 4px;
 }
+
+/* ============================================================
+   17. Refinements based on visual review
+   ============================================================ */
+
+/* Tighten the overall grid height — tiles felt too spacious with placeholder content */
+.bento {
+  grid-template-rows: repeat(5, minmax(90px, auto));
+  max-width: 1300px;
+}
+
+/* Placeholder tile — softer contrast, still reads as "intentionally empty" */
+.tile--placeholder {
+  background: var(--color-bg-tile);
+  border-style: dashed;
+  border-color: var(--color-border);
+  opacity: 0.6;
+}
+
+.tile--placeholder:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+
+/* Credits tile — keep transparent but soften the look */
+.tile--credits {
+  background: var(--color-bg-tile);
+  opacity: 0.7;
+}
+
+.tile--credits:hover {
+  opacity: 1;
+}
