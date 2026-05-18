@@ -370,7 +370,7 @@ body {
 }
 
 /* ============================================================
-   10. cf-ray display (colo prominent, ray ID quiet)
+   10. cf-ray display
    ============================================================ */
 
 .cfray-display {
@@ -564,7 +564,7 @@ body {
 }
 
 /* ============================================================
-   17. Login panel — slide-in from the right
+   17. Login panel
    ============================================================ */
 
 .login-panel {
@@ -637,4 +637,84 @@ body {
 .login-backdrop[data-state="open"] {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* ============================================================
+   18. Mobile responsive (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  body {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .site-header {
+    padding: 0;
+  }
+
+  /* Collapse bento into a single column stack */
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-3);
+  }
+
+  /* Every tile spans the full single column */
+  .tile--cfray,
+  .tile--links,
+  .tile--theme,
+  .tile--hero,
+  .tile--stack,
+  .tile--placeholder,
+  .tile--why,
+  .tile--credits {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  /* Hero shrinks on mobile so it doesn't dominate */
+  .tile--hero .tile__heading {
+    font-size: 1.75rem;
+  }
+
+  .tile--hero .tile__body {
+    font-size: 0.9375rem;
+  }
+
+  /* Smaller padding inside tiles on narrow screens */
+  .tile {
+    padding: var(--space-4);
+  }
+
+  /* Login panel takes full screen width on mobile */
+  .login-panel {
+    width: 100%;
+    padding: var(--space-5) var(--space-4);
+  }
+
+  /* Disable the hover lift on touch devices — no hover anyway */
+  .tile:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   19. Smaller tweaks for very small phones (max-width: 380px)
+   ============================================================ */
+
+@media (max-width: 380px) {
+
+  body {
+    padding: var(--space-3);
+  }
+
+  .tile--hero .tile__heading {
+    font-size: 1.5rem;
+  }
+
+  .tile {
+    padding: var(--space-3);
+  }
 }
