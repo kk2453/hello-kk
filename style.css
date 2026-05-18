@@ -575,3 +575,80 @@ body {
 .tile--credits:hover {
   opacity: 1;
 }
+
+/* ============================================================
+   18. Login panel — slide-in side panel
+   ============================================================ */
+
+.login-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(420px, 100%);
+  height: 100vh;
+  background: var(--color-bg-tile);
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-7) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+
+  z-index: 100;
+}
+
+.login-panel[data-state="open"] {
+  transform: translateX(0);
+}
+
+.login-panel__close {
+  align-self: flex-end;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.login-panel__close:hover {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.login-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.login-panel__heading {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.login-panel__body {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Backdrop overlay — appears behind the panel when open */
+.login-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 50;
+}
+
+.login-backdrop[data-state="open"] {
+  opacity: 1;
+  pointer-events: auto;
+}
