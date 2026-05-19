@@ -31,18 +31,12 @@
   loginPanelClose.addEventListener("click", closeLoginPanel);
   loginBackdrop.addEventListener("click", closeLoginPanel);
 
-<<<<<<< HEAD
-  // Escape key closes the panel
-=======
->>>>>>> 9670481ffa3cdbb76a9d2273c6787a07aca120ba
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && loginPanel.getAttribute("data-state") === "open") {
       closeLoginPanel();
     }
   });
 
-<<<<<<< HEAD
-=======
   // ============================================================
   // 2. Theme toggle
   // ============================================================
@@ -107,6 +101,5 @@
 
   fetchEdgeInfo();
 
->>>>>>> 9670481ffa3cdbb76a9d2273c6787a07aca120ba
   console.log("hello-kk — interactivity ready");
 })();
