@@ -4,27 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>hello, i'm kk — a small cloudflare experiment</title>
-  <meta name="description" content="A small Cloudflare experiment built in an afternoon. Static site on Cloudflare Pages, served from their global edge network." />
-  <meta name="author" content="kk" />
+  <title>not a portfolio</title>
 
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, Slack, Discord, etc.) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hello-kk.pages.dev/" />
-  <meta property="og:title" content="hello, i'm kk — a small cloudflare experiment" />
-  <meta property="og:description" content="A small Cloudflare experiment built in an afternoon. Static site on Cloudflare Pages, served from their global edge network." />
-  <meta property="og:site_name" content="hello-kk" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="hello, i'm kk — a small cloudflare experiment" />
-  <meta name="twitter:description" content="A small Cloudflare experiment built in an afternoon." />
-
-  <!-- Theme color: matches the mobile browser address bar to the site -->
-  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-
-  <!-- Favicon: inline SVG for crisp display at any size, no extra file needed -->
+  <!-- Favicon: swap the "kk" text below for an emoji whenever you pick one.
+       To use an emoji, replace the SVG content with: %3Ctext y='.9em' font-size='90'%3E🐢%3C/text%3E
+       (URL-encode the emoji if needed) -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='-apple-system,system-ui,sans-serif' font-weight='500'%3Ekk%3C/text%3E%3C/svg%3E" />
 
   <script>
@@ -45,9 +29,8 @@
 <body>
 
   <header class="site-header">
-    <div class="site-header__brand">kk</div>
     <button type="button" class="site-header__login" id="login-button" aria-controls="login-panel" aria-expanded="false">
-      Login
+      login
     </button>
   </header>
 
@@ -64,9 +47,8 @@
     <section class="tile tile--links" id="tile-links">
       <span class="tile__label">find me</span>
       <ul class="tile__links">
-        <li><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:your-email@example.com">Email</a></li>
+        <li><a href="https://github.com/kk2453" target="_blank" rel="noopener">github</a></li>
+        <li><a href="https://linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" rel="noopener">linkedin</a></li>
       </ul>
     </section>
 
@@ -81,33 +63,34 @@
 
     <section class="tile tile--hero" id="tile-hero">
       <span class="tile__label">hello</span>
-      <h1 class="tile__heading">Hey, I'm kk.</h1>
-      <p class="tile__body">Placeholder one-liner about who I am.</p>
+      <h1 class="tile__heading">hey, i'm kk.</h1>
+      <p class="tile__body">cs major. backend / cloud intern. i make stuff. most of it works.</p>
     </section>
 
     <section class="tile tile--stack" id="tile-stack">
       <span class="tile__label">my stack</span>
       <ul class="tile__list">
-        <li>Placeholder tech 1</li>
-        <li>Placeholder tech 2</li>
-        <li>Placeholder tech 3</li>
-        <li>Placeholder tech 4</li>
+        <li>oci · azure</li>
+        <li>cloudflare</li>
+        <li>terraform · docker · kubernetes</li>
+        <li>prometheus · grafana · loki</li>
+        <li>ktor · node · django</li>
       </ul>
     </section>
 
     <section class="tile tile--placeholder" id="tile-placeholder">
-      <span class="tile__label">tile #6</span>
+      <span class="tile__label">·</span>
       <p class="tile__value">placeholder XD</p>
     </section>
 
     <section class="tile tile--why" id="tile-why">
       <span class="tile__label">why this exists</span>
-      <p class="tile__body">Placeholder paragraph about why this site was built.</p>
+      <p class="tile__body">wanted to learn how to deploy with cloudflare from the inside. if you're seeing this, it worked. it's a single static page with a few gimmicks, served from whichever cloudflare data center is closest to you.</p>
     </section>
 
     <section class="tile tile--credits" id="tile-credits">
       <span class="tile__label">credits</span>
-      <p class="tile__body">Placeholder credits line.</p>
+      <p class="tile__body">me and claude · may 2026</p>
     </section>
 
   </main>
@@ -117,8 +100,8 @@
   <aside class="login-panel" id="login-panel" data-state="closed" aria-hidden="true">
     <button type="button" class="login-panel__close" id="login-panel-close" aria-label="Close panel">×</button>
     <div class="login-panel__content">
-      <h2 class="login-panel__heading">Login?</h2>
-      <p class="login-panel__body">Placeholder punchline for the login gag.</p>
+      <h2 class="login-panel__heading">login?</h2>
+      <p class="login-panel__body">what exactly are you trying to login to?</p>
     </div>
   </aside>
 
