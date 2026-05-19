@@ -50,36 +50,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   2. Design Tokens (CSS Custom Properties)
+   2. Design Tokens
    ============================================================ */
 
 :root {
-  /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
                "Liberation Mono", monospace;
 
-  /* Spacing scale (multiples of 4px) */
-  --space-1: 0.25rem;   /* 4px  */
-  --space-2: 0.5rem;    /* 8px  */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.5rem;    /* 24px */
-  --space-6: 2rem;      /* 32px */
-  --space-7: 3rem;      /* 48px */
-  --space-8: 4rem;      /* 64px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
 
-  /* Border radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 
-  /* Light theme — default */
   --color-bg: #fafaf9;
   --color-bg-tile: #ffffff;
   --color-bg-tile-hover: #ffffff;
@@ -89,13 +84,11 @@ h1, h2, h3, h4, h5, h6 {
   --color-border: #e5e7eb;
   --color-border-strong: #d1d5db;
 
-  /* Accent — used for cf-ray tile and interactive accents */
   --color-accent-bg: #eff6ff;
   --color-accent-text: #1e40af;
   --color-accent-border: #bfdbfe;
 }
 
-/* Dark theme — auto-applied when OS prefers dark */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0a0a0a;
@@ -112,10 +105,6 @@ h1, h2, h3, h4, h5, h6 {
     --color-accent-border: #1e40af;
   }
 }
-
-/* ============================================================
-   3. Manual theme override (used by JS toggle in Phase 6)
-   ============================================================ */
 
 :root[data-theme="light"] {
   --color-bg: #fafaf9;
@@ -148,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   4. Base typography for our content
+   3. Base typography
    ============================================================ */
 
 .tile__label {
@@ -201,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   5. Page layout
+   4. Page layout
    ============================================================ */
 
 body {
@@ -213,7 +202,7 @@ body {
 }
 
 /* ============================================================
-   6. Header
+   5. Header
    ============================================================ */
 
 .site-header {
@@ -247,22 +236,22 @@ body {
 }
 
 /* ============================================================
-   7. Bento grid
+   6. Bento grid
    ============================================================ */
 
 .bento {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, minmax(110px, 1fr));
+  grid-template-rows: repeat(5, minmax(90px, auto));
   gap: var(--space-4);
-  max-width: 1400px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
 }
 
 /* ============================================================
-   8. Tile base styles
+   7. Tile base styles
    ============================================================ */
 
 .tile {
@@ -286,7 +275,7 @@ body {
 }
 
 /* ============================================================
-   9. Tile grid placements (the bento arrangement)
+   8. Tile grid placements
    ============================================================ */
 
 .tile--cfray {
@@ -340,13 +329,10 @@ body {
   grid-row: 4;
 }
 
-/* The "why" and "credits" tiles end at row 5 — bottom edge */
-
 /* ============================================================
-   10. Tile content alignment (per-variant)
+   9. Tile content alignment
    ============================================================ */
 
-/* Most tiles: stack content naturally at the top, no space-between */
 .tile--links,
 .tile--theme,
 .tile--stack,
@@ -357,7 +343,6 @@ body {
   gap: var(--space-3);
 }
 
-/* Hero: center the content vertically for visual anchor effect */
 .tile--hero {
   justify-content: center;
   align-items: flex-start;
@@ -380,9 +365,32 @@ body {
   max-width: 38ch;
 }
 
-/* cf-ray: keep space-between (label up top, value at bottom) */
 .tile--cfray {
   justify-content: space-between;
+}
+
+/* ============================================================
+   10. cf-ray display
+   ============================================================ */
+
+.cfray-display {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tile--cfray .tile__value {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.cfray-id {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-accent-text);
+  opacity: 0.6;
+  word-break: break-all;
 }
 
 /* ============================================================
@@ -483,15 +491,22 @@ body {
 }
 
 /* ============================================================
-   14. Placeholder tile — lean into the joke
+   14. Placeholder tile
    ============================================================ */
 
 .tile--placeholder {
+  background: var(--color-bg-tile);
+  border-style: dashed;
+  border-color: var(--color-border);
+  opacity: 0.6;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: transparent;
-  border-style: dashed;
+}
+
+.tile--placeholder:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
 }
 
 .tile--placeholder .tile__label {
@@ -515,7 +530,12 @@ body {
 }
 
 .tile--credits {
-  background: transparent;
+  background: var(--color-bg-tile);
+  opacity: 0.7;
+}
+
+.tile--credits:hover {
+  opacity: 1;
 }
 
 .tile--credits .tile__body {
@@ -524,7 +544,7 @@ body {
 }
 
 /* ============================================================
-   16. Focus states (keyboard accessibility)
+   16. Focus states
    ============================================================ */
 
 :focus {
@@ -544,56 +564,23 @@ body {
 }
 
 /* ============================================================
-   17. Refinements based on visual review
-   ============================================================ */
-
-/* Tighten the overall grid height — tiles felt too spacious with placeholder content */
-.bento {
-  grid-template-rows: repeat(5, minmax(90px, auto));
-  max-width: 1300px;
-}
-
-/* Placeholder tile — softer contrast, still reads as "intentionally empty" */
-.tile--placeholder {
-  background: var(--color-bg-tile);
-  border-style: dashed;
-  border-color: var(--color-border);
-  opacity: 0.6;
-}
-
-.tile--placeholder:hover {
-  opacity: 0.9;
-  transform: translateY(-3px);
-}
-
-/* Credits tile — keep transparent but soften the look */
-.tile--credits {
-  background: var(--color-bg-tile);
-  opacity: 0.7;
-}
-
-.tile--credits:hover {
-  opacity: 1;
-}
-
-/* ============================================================
-   18. Login panel — slide-in side panel
+   17. Login panel
    ============================================================ */
 
 .login-panel {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: min(420px, 100%);
   height: 100vh;
   background: var(--color-bg-tile);
-  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
   padding: var(--space-7) var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform var(--transition-base);
 
   z-index: 100;
@@ -604,7 +591,7 @@ body {
 }
 
 .login-panel__close {
-  align-self: flex-end;
+  align-self: flex-start;
   font-size: 1.75rem;
   line-height: 1;
   color: var(--color-text-muted);
@@ -637,7 +624,6 @@ body {
   line-height: 1.7;
 }
 
-/* Backdrop overlay — appears behind the panel when open */
 .login-backdrop {
   position: fixed;
   inset: 0;
@@ -651,4 +637,111 @@ body {
 .login-backdrop[data-state="open"] {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* ============================================================
+   18. Mobile responsive (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  body {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .site-header {
+    padding: 0;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-3);
+  }
+
+  .tile--cfray,
+  .tile--links,
+  .tile--theme,
+  .tile--hero,
+  .tile--stack,
+  .tile--placeholder,
+  .tile--why,
+  .tile--credits {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .tile--hero .tile__heading {
+    font-size: 1.75rem;
+  }
+
+  .tile--hero .tile__body {
+    font-size: 0.9375rem;
+  }
+
+  .tile {
+    padding: var(--space-4);
+  }
+
+  .login-panel {
+    width: 100%;
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .tile:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 380px) {
+
+  body {
+    padding: var(--space-3);
+  }
+
+  .tile--hero .tile__heading {
+    font-size: 1.5rem;
+  }
+
+  .tile {
+    padding: var(--space-3);
+  }
+}
+
+/* ============================================================
+   19. Reduced motion — accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   20. Print styles (rare but free polish)
+   ============================================================ */
+
+@media print {
+  .login-panel,
+  .login-backdrop,
+  .site-header__login,
+  .tile--theme {
+    display: none;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .tile {
+    break-inside: avoid;
+    border: 1px solid #000;
+  }
 }

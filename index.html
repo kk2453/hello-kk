@@ -3,8 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kk — work in progress</title>
-  <meta name="description" content="A small Cloudflare experiment, by kk." />
+
+  <title>hello, i'm kk — a small cloudflare experiment</title>
+  <meta name="description" content="A small Cloudflare experiment built in an afternoon. Static site on Cloudflare Pages, served from their global edge network." />
+  <meta name="author" content="kk" />
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, Slack, Discord, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hello-kk.pages.dev/" />
+  <meta property="og:title" content="hello, i'm kk — a small cloudflare experiment" />
+  <meta property="og:description" content="A small Cloudflare experiment built in an afternoon. Static site on Cloudflare Pages, served from their global edge network." />
+  <meta property="og:site_name" content="hello-kk" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="hello, i'm kk — a small cloudflare experiment" />
+  <meta name="twitter:description" content="A small Cloudflare experiment built in an afternoon." />
+
+  <!-- Theme color: matches the mobile browser address bar to the site -->
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
+  <!-- Favicon: inline SVG for crisp display at any size, no extra file needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='-apple-system,system-ui,sans-serif' font-weight='500'%3Ekk%3C/text%3E%3C/svg%3E" />
+
+  <script>
+    // Theme bootstrap — runs synchronously before paint to prevent
+    // flash of wrong theme. Reads saved choice from localStorage; if
+    // none, falls back to OS preference.
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,7 +55,10 @@
 
     <section class="tile tile--cfray" id="tile-cfray">
       <span class="tile__label">served from</span>
-      <p class="tile__value" id="cfray-value">checking edge node…</p>
+      <div class="cfray-display">
+        <p class="tile__value" id="cfray-colo">…</p>
+        <p class="cfray-id" id="cfray-id">checking edge node</p>
+      </div>
     </section>
 
     <section class="tile tile--links" id="tile-links">
@@ -74,7 +112,9 @@
 
   </main>
 
-  <aside class="login-panel" id="login-panel" aria-hidden="true">
+  <div class="login-backdrop" id="login-backdrop" data-state="closed" aria-hidden="true"></div>
+
+  <aside class="login-panel" id="login-panel" data-state="closed" aria-hidden="true">
     <button type="button" class="login-panel__close" id="login-panel-close" aria-label="Close panel">×</button>
     <div class="login-panel__content">
       <h2 class="login-panel__heading">Login?</h2>
