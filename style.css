@@ -287,13 +287,13 @@ body {
 }
 
 .tile--links {
-  grid-column: 4 / 7;
+  grid-column: 6 / 7;
   grid-row: 1;
 }
 
 .tile--theme {
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 3 / 5;
 }
 
 .tile--hero {
@@ -307,8 +307,8 @@ body {
 }
 
 .tile--placeholder {
-  grid-column: 1 / 2;
-  grid-row: 4 / 5;
+  grid-column: 4 / 6;
+  grid-row: 1;
 }
 
 .tile--why {
